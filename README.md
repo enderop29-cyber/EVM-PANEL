@@ -1,4 +1,4 @@
-# LVM Panel
+# EVM Panel
 
 A self-hosted VPS Management Panel — anyone can install it on their own server and let people register, and manage their own Docker-based VPS instances through a clean web dashboard.
 
@@ -113,4 +113,4 @@ Each VPS is a Docker container built from a systemd-capable base image (Ubuntu/D
 
 ## 📜 License
 
-Free to use and modify. Please keep credit to **LashariGamer**.
+Dont Copy ThIs Code. credit to **EnderX Texh**.
