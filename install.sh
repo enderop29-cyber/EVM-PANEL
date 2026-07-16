@@ -16,16 +16,22 @@ print_banner() {
     clear
     echo -e "${C_PURPLE}"
     cat << "EOF"
- _     __     ____  __
-| |    \ \   / /  \/  |
-| |     \ \ / /| |\/| |     _ __   __ _ _ __   ___| |
-| |      \ V / | |  | |    | '_ \ / _` | '_ \ / _ \ |
-| |____   | |  | |  | |    | |_) | (_| | | | |  __/ |
-|______|  |_|  |_|  |_|    | .__/ \__,_|_| |_|\___|_|
-                            |_|
+███████╗██╗   ██╗███╗   ███╗
+██╔════╝██║   ██║████╗ ████║
+█████╗  ██║   ██║██╔████╔██║
+██╔══╝  ╚██╗ ██╔╝██║╚██╔╝██║
+███████╗ ╚████╔╝ ██║ ╚═╝ ██║
+╚══════╝  ╚═══╝  ╚═╝     ╚═╝
+
+██████╗  █████╗ ███╗   ██╗███████╗██╗
+██╔══██╗██╔══██╗████╗  ██║██╔════╝██║
+██████╔╝███████║██╔██╗ ██║█████╗  ██║
+██╔═══╝ ██╔══██║██║╚██╗██║██╔══╝  ██║
+██║     ██║  ██║██║ ╚████║███████╗███████╗
+╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
 EOF
     echo -e "${C_RESET}"
-    echo -e "${C_CYAN}                     Made By LashariGamer${C_RESET}"
+    echo -e "${C_CYAN}                     Made By EnderX Tech${C_RESET}"
     echo ""
 }
 
@@ -91,9 +97,9 @@ do_install() {
     echo ""
 
     read -rp "Enter a name for your panel [default: LVM Panel]: " PANEL_NAME
-    PANEL_NAME=${PANEL_NAME:-"LVM Panel"}
+    PANEL_NAME=${PANEL_NAME:-"EVM Panel"}
 
-    read -rp "Enter the admin username for LVM Panel: " ADMIN_USER
+    read -rp "Enter the admin username for EVM Panel: " ADMIN_USER
     while true; do
         read -rsp "Enter the admin password: " ADMIN_PASS
         echo ""
@@ -106,13 +112,13 @@ do_install() {
         fi
     done
 
-    read -rp "Enter the port to run LVM Panel on [default: 5000]: " PANEL_PORT
+    read -rp "Enter the port to run EVM Panel on [default: 5000]: " PANEL_PORT
     PANEL_PORT=${PANEL_PORT:-5000}
 
     read -rp "Does this server have a public IPv4 address? (y/n): " HAS_PUBLIC_IP
     read -rp "Do you want to connect a custom domain now? (y/n): " WANT_DOMAIN
     if [[ "$WANT_DOMAIN" =~ ^[Yy]$ ]]; then
-        read -rp "Enter your domain (e.g. panel.example.com): " PANEL_DOMAIN
+        read -rp "Enter your domain (e.g. panel.example.com): Jo aap ka domain" PANEL_DOMAIN
     fi
 
     echo ""
@@ -132,7 +138,7 @@ do_install() {
 
     configure_docker_storage
 
-    echo -e "${C_YELLOW}[3/7] Fetching LVM Panel source...${C_RESET}"
+    echo -e "${C_YELLOW}[3/7] Fetching EVM Panel source...${C_RESET}"
     if [ -d "$INSTALL_DIR" ]; then
         rm -rf "$INSTALL_DIR"
     fi
@@ -247,9 +253,9 @@ EOF
 # ==========================================================
 do_uninstall() {
     require_root
-    echo -e "${C_RED}This will remove LVM Panel, its systemd service, all VPS containers it created,"
+    echo -e "${C_RED}This will remove EVM Panel, its systemd service, all VPS containers it created,"
     echo -e "its Docker network/images, and (optionally) its Nginx config.${C_RESET}"
-    read -rp "Are you sure you want to uninstall LVM Panel? (y/n): " CONFIRM
+    read -rp "Are You Sure You Want To Uninstall EVM Panel? (y/n): " CONFIRM
     if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
         echo "Uninstall cancelled."
         return
@@ -261,7 +267,7 @@ do_uninstall() {
     rm -f /etc/systemd/system/${SERVICE_NAME}.service
     systemctl daemon-reload
 
-    echo -e "${C_YELLOW}Removing VPS containers created by LVM Panel...${C_RESET}"
+    echo -e "${C_YELLOW}Removing VPS containers created by EVM Panel...${C_RESET}"
     docker ps -a --format '{{.Names}}' 2>/dev/null | grep '^lvm-' | xargs -r docker rm -f
     docker images --format '{{.Repository}}' 2>/dev/null | grep '^lvm-panel/' | xargs -r -I{} docker rmi -f {}
     docker network rm lvm_panel_net 2>/dev/null || true
@@ -329,8 +335,8 @@ do_add_swap() {
 # MENU
 # ==========================================================
 print_banner
-echo "1. Install LVM Panel"
-echo "2. Uninstall LVM Panel"
+echo "1. Install EVM Panel"
+echo "2. Uninstall EVM Panel"
 echo "3. Add New Swap For Increase Your Ram"
 echo "4. Fix Docker Storage Driver (VPS creation stuck on Error)"
 echo ""
