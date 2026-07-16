@@ -2,7 +2,7 @@
 
 A self-hosted VPS Management Panel — anyone can install it on their own server and let people register, and manage their own Docker-based VPS instances through a clean web dashboard.
 
-**Made By LashariGamer**
+**Made By EnderX Tech**
 
 ---
 
@@ -42,7 +42,7 @@ You do **not** need to `git clone` anything yourself — the installer does ever
 Run this on a fresh Ubuntu/Debian server as root:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/atifqmi-max/lvm-panel/main/install.sh -o install.sh && sudo bash install.sh
+curl -fsSL https://raw.githubusercontent.com/enderop29-cyber/EVM-PANEL/refs/heads/main/install.sh -o install.sh && sudo bash install.sh
 ```
 
 During installation you'll be asked:
